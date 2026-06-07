@@ -7,7 +7,9 @@
   <title>Ujian | paggalih.github.io</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <script>
+  <link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1e3a6e">
+	<script>
     MathJax = { tex: { inlineMath: [['$','$'],['\\(','\\)']], displayMath: [['$$','$$'],['\\[','\\]']] }, startup: { typeset: false } };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
@@ -1688,6 +1690,10 @@ document.addEventListener('fullscreenchange', () => {
   }
 });
 
+</script>
+<script>
+  if ('serviceWorker' in navigator)
+    navigator.serviceWorker.register('/sw.js');
 </script>
 </body>
 </html>
