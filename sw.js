@@ -1,12 +1,12 @@
 /* sw.js — Ujian PWA Service Worker */
-const CACHE = 'ujian-v1';
+const CACHE = 'ujian-v2';
 
 const SHELL = [
-  '/',
-  '/ujian/',
-  '/ujian/index.html',
-  '/assets/css/style.css',
-  '/assets/js/main2.js',
+  'https://paggalih.github.io/',
+  'https://paggalih.github.io/ujian/',
+  'https://paggalih.github.io/ujian/index.html',
+  'https://paggalih.github.io/assets/css/style.css',
+  'https://paggalih.github.io/assets/js/main2.js',
   'https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap',
   'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js'
 ];
