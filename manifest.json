@@ -2,14 +2,14 @@
   "name": "Ujian Mata Kuliah – paggalih",
   "short_name": "Ujian",
   "description": "Platform ujian online Galih Pradananta",
-  "start_url": "/ujian/",
-  "scope": "/",
+  "start_url": "https://paggalih.github.io/ujian/",
+  "scope": "https://paggalih.github.io/ujian/",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#1e3a6e",
   "background_color": "#f5f4f0",
   "lang": "id",
   "icons": [
-    { "src": "https://paggalih.github.io/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" }
+    { "src": "https://paggalih.github.io/ujian/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" }
   ]
 }
