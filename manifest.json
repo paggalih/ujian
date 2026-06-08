@@ -14,13 +14,6 @@
   ]
   "screenshots": [
   {
-    "src": "https://paggalih.github.io/ujian/screenshots/desktop.png",
-    "sizes": "1280x720",
-    "type": "image/png",
-    "form_factor": "wide",
-    "label": "Halaman Login"
-  },
-  {
     "src": "https://paggalih.github.io/ujian/screenshots/mobile.png",
     "sizes": "390x844",
     "type": "image/png",
