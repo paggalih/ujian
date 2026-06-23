@@ -67,7 +67,7 @@
     <div class="table-wrap">
       <table id="dataTable">
         <thead>
-          <tr><th>Nama</th><th>NIM</th><th>Prodi</th><th>Kelas</th><th>Jenis Soal</th><th>Inti Jawaban</th><th>Skor</th></tr>
+          <tr><th>Nama</th><th>NIM</th><th>Prodi</th><th>Kelas</th><th>Jenis Soal</th><th>Inti Jawaban</th><th>Skor</th><th>AI Detector</th></tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -120,7 +120,7 @@ function loadData() {
       tr.innerHTML = `<td>${escapeHtml(row.nama)}</td><td>${escapeHtml(row.nim)}</td>
         <td>${escapeHtml(row.prodi)}</td><td>${escapeHtml(row.kelas)}</td>
         <td>${escapeHtml(row.jenis_soal)}</td><td>${escapeHtml(row.inti_jawaban)}</td>
-        <td>${escapeHtml(row.skor)}</td>`;
+        <td>${escapeHtml(row.skor)}</td><td>${escapeHtml(row.ai_detector)}</td>`;
       tbody.appendChild(tr);
     });
   }).catch(e => console.error(e));
