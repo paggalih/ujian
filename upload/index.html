@@ -12,10 +12,18 @@
 
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxxqVU83HN6PeAeeighw4R1r6rwzcZOIHwBVvRCTxFZ-EXpp5u52cUCpdQCgQyKC8S-hg/exec';
+const MAX_BYTES = 10 * 1024 * 1024; // 10 MB
+
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[c]);
+}
 
 function uploadPdf() {
   const file = document.getElementById('pdfFile').files[0];
   if (!file) return alert('Pilih file PDF dulu.');
+  if (file.size > MAX_BYTES) return alert('File terlalu besar (maks 10 MB).');
 
   const reader = new FileReader();
   reader.onload = function() {
@@ -41,13 +49,16 @@ function loadData() {
   fetch(SCRIPT_URL).then(r => r.json()).then(result => {
     const tbody = document.querySelector('#dataTable tbody');
     tbody.innerHTML = '';
+    if (!result || !Array.isArray(result.data)) return;
     result.data.forEach(row => {
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td>${row.nama}</td><td>${row.nim}</td><td>${row.prodi}</td>
-        <td>${row.kelas}</td><td>${row.jenis_soal}</td><td>${row.inti_jawaban}</td><td>${row.skor}</td>`;
+      tr.innerHTML = `<td>${escapeHtml(row.nama)}</td><td>${escapeHtml(row.nim)}</td>
+        <td>${escapeHtml(row.prodi)}</td><td>${escapeHtml(row.kelas)}</td>
+        <td>${escapeHtml(row.jenis_soal)}</td><td>${escapeHtml(row.inti_jawaban)}</td>
+        <td>${escapeHtml(row.skor)}</td>`;
       tbody.appendChild(tr);
     });
-  });
+  }).catch(e => console.error(e));
 }
 
 window.onload = loadData;
