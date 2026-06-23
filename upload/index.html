@@ -1,14 +1,79 @@
-<a href="https://docs.google.com/document/d/16YTL92bHn-3x6x39dlXgQqH9s6aZtj4awAMgIAnC1LM/edit?usp=sharing">Unduh Format Jawaban</a><br>
-<input type="file" id="pdfFile" accept="application/pdf">
-<button onclick="uploadPdf()">Kirim Jawaban</button>
-<p id="status"></p>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1e3a6e">
+<title>Kirim Jawaban Ujian</title>
+<style>
+  :root { --navy: #1e3a6e; --navy-light: #2d4f8f; --bg: #f7f8fa; --line: #e2e6ee; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: #1a1a2e;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+  header {
+    background: var(--navy); color: #fff;
+    padding: 28px 20px; text-align: center;
+  }
+  header h1 { margin: 0; font-size: 1.5rem; font-weight: 600; letter-spacing: .3px; }
+  header p { margin: 6px 0 0; font-size: .9rem; opacity: .85; }
+  main { max-width: 880px; margin: 0 auto; padding: 24px 20px 60px; }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: 10px;
+    padding: 22px; margin-bottom: 24px;
+  }
+  a.format-link {
+    display: inline-block; color: var(--navy); font-weight: 600;
+    text-decoration: none; border-bottom: 2px solid var(--navy); padding-bottom: 2px;
+  }
+  a.format-link:hover { color: var(--navy-light); border-color: var(--navy-light); }
+  .upload-row { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  input[type="file"] { font-size: .9rem; }
+  button {
+    background: var(--navy); color: #fff; border: none; border-radius: 6px;
+    padding: 10px 18px; font-size: .92rem; font-weight: 600; cursor: pointer;
+  }
+  button:hover { background: var(--navy-light); }
+  #status { margin: 14px 0 0; font-size: .9rem; color: var(--navy); min-height: 1.2em; }
+  table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+  thead th {
+    background: var(--navy); color: #fff; text-align: left;
+    padding: 10px 12px; font-weight: 600;
+  }
+  tbody td { padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tbody tr:nth-child(even) { background: #fafbfd; }
+  .table-wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Kirim Jawaban Ujian</h1>
+  <p>Galih Pradananta</p>
+</header>
 
-<table id="dataTable">
-  <thead>
-    <tr><th>Nama</th><th>NIM</th><th>Prodi</th><th>Kelas</th><th>Jenis Soal</th><th>Inti Jawaban</th><th>Skor</th></tr>
-  </thead>
-  <tbody></tbody>
-</table>
+<main>
+  <div class="card">
+    <a class="format-link" href="https://docs.google.com/document/d/16YTL92bHn-3x6x39dlXgQqH9s6aZtj4awAMgIAnC1LM/edit?usp=sharing" target="_blank" rel="noopener">Unduh Format Jawaban</a>
+    <div class="upload-row">
+      <input type="file" id="pdfFile" accept="application/pdf">
+      <button onclick="uploadPdf()">Kirim Jawaban</button>
+    </div>
+    <p id="status"></p>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table id="dataTable">
+        <thead>
+          <tr><th>Nama</th><th>NIM</th><th>Prodi</th><th>Kelas</th><th>Jenis Soal</th><th>Inti Jawaban</th><th>Skor</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</main>
 
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxxqVU83HN6PeAeeighw4R1r6rwzcZOIHwBVvRCTxFZ-EXpp5u52cUCpdQCgQyKC8S-hg/exec';
@@ -63,3 +128,5 @@ function loadData() {
 
 window.onload = loadData;
 </script>
+</body>
+</html>
