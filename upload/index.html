@@ -1,0 +1,53 @@
+<input type="file" id="pdfFile" accept="application/pdf">
+<button onclick="uploadPdf()">Kirim Jawaban</button>
+<p id="status"></p>
+
+<table id="dataTable">
+  <thead>
+    <tr><th>Nama</th><th>NIM</th><th>Prodi</th><th>Kelas</th><th>Jenis Soal</th><th>Inti Jawaban</th><th>Skor</th></tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script>
+const SCRIPT_URL = 'PASTE_URL_WEB_APP';
+
+function uploadPdf() {
+  const file = document.getElementById('pdfFile').files[0];
+  if (!file) return alert('Pilih file PDF dulu.');
+
+  const reader = new FileReader();
+  reader.onload = function() {
+    const base64Data = reader.result.split(',')[1];
+    document.getElementById('status').innerText = 'Mengirim...';
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ filename: file.name, mimeType: file.type, base64Data })
+    })
+    .then(r => r.json())
+    .then(result => {
+      document.getElementById('status').innerText = result.message || result.status;
+      if (result.status === 'success') loadData();
+    })
+    .catch(e => document.getElementById('status').innerText = 'Error: ' + e.message);
+  };
+  reader.readAsDataURL(file);
+}
+
+function loadData() {
+  fetch(SCRIPT_URL).then(r => r.json()).then(result => {
+    const tbody = document.querySelector('#dataTable tbody');
+    tbody.innerHTML = '';
+    result.data.forEach(row => {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${row.nama}</td><td>${row.nim}</td><td>${row.prodi}</td>
+        <td>${row.kelas}</td><td>${row.jenis_soal}</td><td>${row.inti_jawaban}</td><td>${row.skor}</td>`;
+      tbody.appendChild(tr);
+    });
+  });
+}
+
+window.onload = loadData;
+</script>
